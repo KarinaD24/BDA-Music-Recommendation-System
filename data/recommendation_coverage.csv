@@ -1,0 +1,5 @@
+metric,value
+total_catalog_tracks,15194.0
+unique_recommended_tracks,625.0
+not_recommended_tracks,14569.0
+recommendation_coverage_percentage,4.1135
