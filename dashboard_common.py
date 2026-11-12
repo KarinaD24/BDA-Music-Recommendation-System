@@ -45,6 +45,7 @@ def configure_page(title: str, icon: str = "🎵") -> None:
         font-weight:700;
         margin:0;
         white-space:normal;
+        padding-top: 10px;
     }
 
     .sidebar-brand-project {
