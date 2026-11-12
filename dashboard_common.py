@@ -120,10 +120,13 @@ def configure_page(title: str, icon: str = "🎵") -> None:
         '</div>',
         unsafe_allow_html=True,
     )
+    st.sidebar.markdown("<div style='height:16px;'></div>", unsafe_allow_html=True)
     st.sidebar.page_link("pages/0_Executive_Summary.py", label="Executive Summary")
     st.sidebar.page_link("pages/1_Audience_&_Catalog_Insights.py", label="Audience & Catalog Insights")
     st.sidebar.page_link("pages/2_Recommendation_Analytics.py", label="Recommendation Analytics")
     st.sidebar.page_link("pages/3_Graph_Analytics_&_Discovery.py", label="Graph Analytics & Discovery")
+
+
 @st.cache_data
 def load_csv(filename: str) -> pd.DataFrame:
     path = DATA_DIR / filename
