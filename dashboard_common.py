@@ -22,28 +22,9 @@ def configure_page(title: str, icon: str = "🎵") -> None:
     div[data-testid="stMetricValue"] { color:#1DB954 !important; }
     section[data-testid="stSidebar"] { background:#000; }
     header[data-testid="stHeader"] { background:transparent; }
-    section[data-testid="stSidebar"] div[data-testid="stSidebarContent"] {
-        display:flex !important;
-        flex-direction:column !important;
-        justify-content:flex-start !important;
-    }
-    section[data-testid="stSidebar"] div[data-testid="stSidebarUserContent"] {
-        order:0 !important;
-        flex:0 0 auto;
-        padding-top:0 !important;
-        padding-bottom:0 !important;
-    }
-    section[data-testid="stSidebar"] div[data-testid="stSidebarNav"] {
-        order:1 !important;
-        flex:0 0 auto;
-        margin:0 !important;
-        padding-top:.8rem !important;
-        padding-bottom:1rem !important;
-        border:0 !important;
-    }
-    section[data-testid="stSidebar"] [data-testid="stSidebarNav"] { border:0 !important; }
-    section[data-testid="stSidebar"] hr { display:none !important; }
-
+    section[data-testid="stSidebar"] div[data-testid="stSidebarContent"] { display:flex !important; flex-direction:column !important; justify-content:flex-start !important; }
+    section[data-testid="stSidebar"] div[data-testid="stSidebarUserContent"] { order:1; flex:0 0 auto; padding-top:0 !important; padding-bottom:0 !important; }
+    section[data-testid="stSidebar"] div[data-testid="stSidebarNav"] { order:2; flex:0 0 auto; margin:0 !important; padding-top: 2.5rem !important; padding-bottom:1rem; }
     a[data-testid="stSidebarNavLink"] { color:#fff !important; background: transparent !important; font-weight:400 !important; }
     a[data-testid="stSidebarNavLink"] span { color:#fff !important; font-weight:400 !important; }
     div[data-testid="stSidebarNav"] a[data-testid="stSidebarNavLink"]:hover { color:#1ed760 !important; background:#1b1b1b !important; }
@@ -53,20 +34,23 @@ def configure_page(title: str, icon: str = "🎵") -> None:
     div[data-baseweb="select"] [data-baseweb="tag"] * { color:#1ed760 !important; font-weight:600 !important; }
     div[role="listbox"] [role="option"][aria-selected="true"] { background:#0f5c2e !important; color:#1ed760 !important; }
     div[role="listbox"] [role="option"][aria-selected="true"] * { color:#1ed760 !important; }
+    .sidebar-brand-title { color:#1DB954; font-size: 34px; line-height: 34px; font-weight:750; margin:0; }
+    .sidebar-brand-copy { color:#fff; font-size:.95rem; line-height:1.5; margin:0; }
     .sidebar-brand-title {
-        color:#1DB954;
-        font-size:34px;
-        line-height:34px;
-        font-weight:750;
-        margin:0;
+        color: #1DB954;
+        font-size: 34px;
+        line-height: 34px;
+        font-weight: 750;
+        padding-bottom: 18px;
     }
+
     .sidebar-brand-copy {
-        color:#fff;
-        font-size:.95rem;
-        line-height:1.25;
-        font-weight:700;
-        margin:0;
-        white-space:normal;
+        color: #fff;
+        font-size: 1.1rem;
+        line-height: 1.25;
+        font-weight: 700;
+        margin: 0;
+        white-space: nowrap;
     }
 
     .sidebar-brand-project {
@@ -117,16 +101,16 @@ def configure_page(title: str, icon: str = "🎵") -> None:
         )
 
     st.markdown(f"""
-        <style>
-        {active_selector} {{
-            color: #1DB954 !important;
-            font-weight: 700 !important;
-        }}
-        {active_selector} span {{
-            color: #1DB954 !important;
-            font-weight: 700 !important;
-        }}
-        </style>
+    <style>
+    {active_selector} {{
+        color: #1DB954 !important;
+        font-weight: 700 !important;
+    }}
+    {active_selector} span {{
+        color: #1DB954 !important;
+        font-weight: 700 !important;
+    }}
+    </style>
     """, unsafe_allow_html=True)
     icon_col, title_col = st.sidebar.columns(
         [0.12, 0.88],
@@ -172,8 +156,6 @@ def style_chart(fig):
         font_color="white",
         colorway=["#1DB954", "#b3b3b3", "#0f5c2e", "#f0f0f0", "#168a3d", "#747b75", "#29cf66", "#c7d3c9", "#124d29", "#8f9b91", "#65d98a", "#e5e5e5"],
         legend=dict(font=dict(color="#e5e5e5")),
-        xaxis=dict(showgrid=False, zeroline=False, showline=False),
-        yaxis=dict(showgrid=False, zeroline=False, showline=False),
     )
     for trace in fig.data:
         if trace.type == "pie":
