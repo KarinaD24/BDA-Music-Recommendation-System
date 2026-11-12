@@ -7,4 +7,4 @@ pages = [
     st.Page("pages/3_Graph_Analytics_&_Discovery.py", title="Graph Analytics & Discovery", url_path="graph-analytics-discovery"),
 ]
 
-st.navigation(pages, position="sidebar", expanded=True).run()
+st.navigation(pages, position="hidden").run()
